@@ -1,99 +1,118 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Account Manager</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Account Manager</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="tab">
-    <button class="tablinks" id="findtab">
-      <img src="/Images/search_icon.png" style="width:20px;height:20px"/>
-    </button>
-    <button class="tablinks" id="addtab">Add</button>
-    <button class="tablinks" id="edittab">Edit</button>
-    <button class="tablinks" id="settingstab">Settings</button> 
-  </div>
+    <div class="tab">
+        <button class="tablinks" id="findtab">
+            <img src="/Images/search_icon.svg" style="width:20px;height:20px" />
+        </button>
+        <button class="tablinks" id="addtab">
+            <img src="/Images/add_icon.svg" style="width:20px;height:20px"/>
+        </button>
+        <button class="tablinks" id="edittab">
+            <img src="/Images/edit_icon.svg" style="width:20px;height:20px"/>
+        </button>
+        <button class="tablinks" id="settingstab">
+            <img src="/Images/settings_icon.svg" style="width:20px;height:20px"/>
+        </button>
+    </div>
 
-  <!-- Tab content -->
-  <div id="find" class="tabcontent">
-    <h2>Find Account</h2>
-    <form>  
+    <!-- Tab content -->
+    <div id="find" class="tabcontent">
+        <h2>Find Account</h2>
+        <form>
             <label for="findcountry">Country:</label>
             <select name="Countries" id="findcountry">
                 <option value="0">none</option>
-            </select>  
+            </select>
             <label for="findpaymentmethod">Payment Method:</label>
             <select name="Payment Method" id="findpaymentmethod">
                 <option value="0">none</option>
             </select>
+            <br>
+        </form>
         <br>
-    </form>
-    <br>
-    <button id="findaccount">Find Account</button>
-    <div class="UserTable" id="SearchUserTable">
-      <table>
-        <tr>
-          <th>UserID</th>
-          <th>Username</th>
-          <th>Email</th>
-        </tr>
-      </table>
+        <div class="centered-button">
+            <button id="findaccount">Find Account</button>
+        </div>
+        <div class="UserTable" id="SearchUserTable">
+            <table>
+                <tr>
+                    <th>UserID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                </tr>
+            </table>
+        </div>
     </div>
-  </div>
 
-  <div id="add" class="tabcontent">
-    <h2>Add Account</h2>
-    <form> 
-        <label for="useridadd">UserID:</label> 
-        <input type="text" id="useridadd" />  
-      <label for="emailadd">Email:</label> 
-      <input type="text" id="emailadd" /> 
-      <label for="usernameadd">Username:</label> 
-      <input type="text" id="usernameadd" /> 
-      <label for="countryadd">Country:</label> 
-      <select name="Countries" id="countryadd">
-        <option value="0">none</option>
-      </select> 
-      <label for="paymentmethodadd">Payment Method:</label> 
-      <select name="Payment Method" multiple id="paymentmethodadd">
-        <option value="0">none</option>
-      </select> 
-    </form>
-    <br>
-    <button id="addaccount">Add Account</button>
-  </div>
-
-  <div id="edit" class = "tabcontent">
-    <h2>Edit User Details</h2>
-    <p>Enter Users ID or Username</p>
-    <form>
-      <label for="useridedit">UserID:</label> 
-      <input type="text" id = "useridedit"/>
-      <label for="username-edit">Username:</label>
-      <input type="text" id="username-edit"/>
-    </form>
-    <button id ="edit-user">Edit User</button>
-    <button id = "remove-user">Remove User</button>
-    <div class="edit-user-form">
-      <form>
-        <label for="payment-method-add">Payment Method:</label>
-        <select name="Payment Method" multiple id="paymentmethodadd">
-          <option value="0">none</option>
-        </select> 
-        <button id="remove-payment-method">Remove</button>
-        <button id="add-payment-method">Add</button>
-      </form>
+    <div id="add" class="tabcontent">
+        <h2>Add Account</h2>
+        <form>
+            <label for="useridadd">UserID:</label>
+            <input type="text" id="useridadd" />
+            <label for="emailadd">Email:</label>
+            <input type="text" id="emailadd" />
+            <label for="usernameadd">Username:</label>
+            <input type="text" id="usernameadd" />
+            <label for="countryadd">Country:</label>
+            <select name="Countries" id="countryadd">
+                <option value="0">none</option>
+            </select>
+            <label for="paymentmethodadd">Payment Method:</label>
+            <select name="Payment Method" multiple id="paymentmethodadd">
+                <option value="0">none</option>
+            </select>
+        </form>
+        <br>
+        <div class="centered-button">
+            <button id="addaccount">Add Account</button>
+        </div>
     </div>
-  </div>
 
-  <div id="settings" class="tabcontent">
-    <label for="userfile">User File: </label> 
-    <input type="file" id="userfile" name="userfile" accept=".xml">
-    <button id="userfileupload">Upload</button>
-    <button id="downloaduserfile">Download User Data</button>
-  </div>
+    <div id="edit" class="tabcontent">
+        <h2>Edit User Details</h2>
+        <p>Enter Users ID or Username</p>
+        <form>
+            <label for="useridedit">UserID:</label>
+            <input type="text" id="useridedit" />
+            <label for="username-edit">Username:</label>
+            <input type="text" id="username-edit" />
+        </form>
+        <button id="edit-user">Edit User</button>
+        <button id="remove-user">Remove User</button>
+        <div class="edit-user-form">
+            <form>
+                <label for="payment-method-add">Payment Method:</label>
+                <select name="Payment Method" multiple id="paymentmethodadd">
+                    <option value="0">none</option>
+                </select>
+                <div class="centered-button">
+                    <button id="remove-payment-method">Remove</button>
+                    <button id="add-payment-method">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-  <script src="popup.js"></script>
+    <div id="settings" class="tabcontent">
+        <form>
+            <label for="switch"> Dark Mode: </label>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label><br>
+            <label for="userfile">User File: </label>
+            <input type="file" id="userfile" name="userfile" accept=".xml">
+            <button id="userfileupload">Upload</button>
+            <button id="downloaduserfile">Download User Data</button>
+        </form>
+    </div>
+
+    <script src="popup.js"></script>
 </body>
 </html>
