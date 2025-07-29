@@ -1,0 +1,91 @@
+body {
+  min-width: 300px;
+  background-color: rgb(55, 55, 55);
+  font-family: sans-serif;
+}
+
+form{
+    display: grid;
+    flex-flow: column; 
+    grid-gap: 10px;
+    grid-template-columns: [label] auto [input] 1fr;
+}
+
+input{
+    grid-column: input;
+    align-self: center;
+}
+
+select 
+{
+    grid-column: input;
+    align-self: center;
+}
+
+label
+{
+    grid-column: label;
+    color: #ddd; 
+
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: inherit;
+  text-align: center;
+}
+
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #90c8cf; 
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #90c8cf;
+}
+
+/* Style the tab content */
+.tabcontent { 
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.UserTable {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.edit-user-form{
+  display: none;
+}
+
+form 
+{
+    min-width: inherit;
+}
+
+h2
+{
+    align-content: center;
+    color: rgb(196, 196, 196);
+}
+

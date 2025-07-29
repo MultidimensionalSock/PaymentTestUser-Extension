@@ -1,0 +1,10 @@
+{
+    "manifest_version" : 3, 
+    "name" : "Payments Accounts",
+    "version" : "1.0.0",
+    "description" : "Simple Extension to hold and search for Accounts for testing",
+    "action":
+    {
+        "default_popup" : "popup.html"
+    }
+}
