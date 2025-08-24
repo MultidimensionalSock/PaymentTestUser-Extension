@@ -1,7 +1,11 @@
 body {
   min-width: 300px;
-  background-color: rgb(55, 55, 55);
+  background-color: rgb(255, 255, 255);
   font-family: sans-serif;
+}
+
+.dark {
+  background-color: rgb(55, 55, 55);
 }
 
 form{
@@ -25,8 +29,13 @@ select
 label
 {
     grid-column: label;
-    color: #ddd; 
+    color: #393939; 
 
+}
+
+body.dark label 
+{
+  color: #b8b8b8; 
 }
 
 .tab {
@@ -82,7 +91,12 @@ form
 h2
 {
     align-content: center;
-    color: rgb(196, 196, 196);
+    color: rgb(72, 72, 72);
+}
+
+body.dark h2 
+{
+  color: rgb(255, 255, 255);
 }
 
 h4
@@ -159,4 +173,6 @@ input:checked + .slider:before {
   display: grid;
   text-align: center;
 }
+
+
 
