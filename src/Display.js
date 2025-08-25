@@ -25,6 +25,15 @@ function openTab(tabName) {
 
 window.onload =  async function()
 {
+    var darkmode =  JSON.parse(localStorage.getItem("dark"));
+    if (darkmode === null)
+    {
+      darkmode = false; 
+      localStorage.setItem("dark", darkmode.toString());
+    }
+    var checkbox = document.getElementById("dark-mode");
+    checkbox.checked = darkmode; 
+    DarkMode(JSON.parse(darkmode));
     LoadPaymentMethods();
     LoadCountries();
 }
@@ -90,21 +99,22 @@ async function LoadPaymentMethods()
 document.getElementById("dark-mode").addEventListener("click", function(){ 
   var checkbox = document.getElementById("dark-mode");
   if (checkbox.checked == true)
-  { 
+  {  
     DarkMode(true);
     return;
-  }
+  } 
   DarkMode(false);
 });
 
 function DarkMode(isDark)
 { 
-  var body = document.body; 
+  var body = document.body;
+  localStorage.setItem("dark", isDark.toString());
+  alert(localStorage.getItem("dark"));  
   if (isDark)
   {
-    body.classList.add('dark'); 
+    body.classList.add('dark');  
     return;
   }
   body.classList.remove('dark');  
-  
 }
