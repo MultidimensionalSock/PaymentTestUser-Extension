@@ -77,14 +77,18 @@
     <h2>Edit User Details</h2>
     <form>
       <label for="useridedit">UserID:</label> 
-      <input type="text" id = "useridedit"/> 
+      <input type="text" id = "userid-edit"/> 
       <label for="email-edit">Email:</label>
       <input type="text" id = "email-edit"/>
       <br>
     </form>
+    <label for="payment-method-edit">Payment Method:</label> 
+      <select name="Payment Method" multiple id="payment-method-edit">
+        <option value="0">none</option>
+    </select> 
     <label class="centered-button">
       <button id = "edit-user">Edit User</button>
-      <button id = "removeUser">Remove User</button>
+      <button id = "remove-user">Remove User</button>
     </label>
   </div>
 

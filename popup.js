@@ -2,10 +2,7 @@
 
 
 
-document.getElementById("edit-user").addEventListener("click", function(){
-  tabcontent = document.getElementsByClassName("edit-user-form"); 
-    tabcontent[0].style.display = "block"; 
-});
+
 
 
 

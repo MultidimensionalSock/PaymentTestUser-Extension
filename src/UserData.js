@@ -17,8 +17,7 @@ async function Search(countryID = 0, PaymentMethodID = 0)
    
   GetUserFile();
 
-  var users = xmlDoc.getElementsByTagName("User");
-  alert(users.length);
+  var users = xmlDoc.getElementsByTagName("User"); 
   for (var i = 0; i < users.length; i++)
   { 
     var cmatch = false; 
@@ -188,4 +187,101 @@ async function GetUserFile()
   var parser = new DOMParser();
   xmlDoc = parser.parseFromString(xmlString, "text/xml");  
   return xmlDoc;
+}
+
+//remove user 
+document.getElementById("remove-user").addEventListener("click", function(){ 
+  var userID = document.getElementById("userid-edit").value.trim(); 
+  var email = document.getElementById("email-edit").value.trim();
+  RemoveUser(userID, email);
+});
+
+async function RemoveUser(userID, email)
+{
+  const serializer = new XMLSerializer(); 
+  xmlDoc = await GetUserFile();
+  var users = xmlDoc.getElementsByTagName("User");
+
+  for (var i = 0; i < users.length; i++)
+  { 
+    var IDMatch = false;
+    var emailMatch = false; 
+
+    if (users[i].getElementsByTagName("UserID")[0].textContent == userID || userID === "")
+    {  
+      IDMatch = true;
+    }
+    if (users[i].getElementsByTagName("Email")[0].textContent == email || email === "")
+    {  
+      emailMatch = true;
+    }
+
+    if (!IDMatch || !emailMatch)
+    { 
+      continue;
+    } 
+    users[i].parentNode.removeChild(users[i]); 
+    alert("user removed");
+  }
+
+  var updatedXmlString = serializer.serializeToString(xmlDoc);
+
+  //save file to chrome local storage
+  localStorage.setItem("usersXml", updatedXmlString);
+}
+
+//edit user 
+document.getElementById("edit-user").addEventListener("click", function(){ 
+  var userID = document.getElementById("userid-edit").value.trim(); 
+  var email = document.getElementById("email-edit").value.trim();
+  var paymentmethod = [];
+  for (var option of document.getElementById("payment-method-edit").options)
+  {
+    if (option.selected)
+    {
+      paymentmethod.push(option.value);
+    }
+  } 
+  AddPaymentMethod(userID, email, paymentmethod);
+});
+
+async function AddPaymentMethod(userID, email, paymentmethod)
+{ 
+  const serializer = new XMLSerializer(); 
+  xmlDoc = await GetUserFile();
+  var users = xmlDoc.getElementsByTagName("User");
+
+  for (var i = 0; i < users.length; i++)
+  { 
+    var IDMatch = false;
+    var emailMatch = false; 
+
+    if (users[i].getElementsByTagName("UserID")[0].textContent === userID || userID === "")
+    {  
+      IDMatch = true; 
+    }
+    if (users[i].getElementsByTagName("Email")[0].textContent === email || email === "")
+    {   
+      emailMatch = true;
+    }
+
+    if (!IDMatch || !emailMatch)
+    { 
+      continue;
+    } 
+    alert("match found" + i)
+      var paymentMethodsElement = users[i].getElementsByTagName('PaymentMethods');
+      for (var i = 0; i < paymentmethod.length; i++)
+      {
+        var paymentMethodElement = xmlDoc.createElement('PaymentMethod');  
+        paymentMethodElement.textContent = paymentmethod[i];
+        paymentMethodsElement[0].appendChild(paymentMethodElement);
+      } 
+      alert("payment method added");
+  }
+
+  var updatedXmlString = serializer.serializeToString(xmlDoc);
+
+  //save file to chrome local storage
+  localStorage.setItem("usersXml", updatedXmlString);
 }
