@@ -1,4 +1,5 @@
 //Find User 
+
 document.getElementById("findaccount").addEventListener("click", function () 
 {
   var countryid = document.getElementById("findcountry").value;
@@ -13,22 +14,8 @@ async function Search(countryID = 0, PaymentMethodID = 0)
   {
     parent.removeChild(parent.children[k]);
   }
-  //get XML doc
-  const xmlString = localStorage.getItem("usersXml");
-  if (xmlString === null)
-  {
-    alert("load data from local file");
-    const response = await fetch('data/users.xml');
-      if (!response.ok)
-      {
-        alert("could not read xml file");
-      }
-      const xmlString = await response.text();  
-      alert(xmlString);
-      localStorage.setItem("usersXml", xmlString);
-  } 
-  var parser = new DOMParser();
-  xmlDoc = parser.parseFromString(xmlString, "text/xml"); 
+   
+  GetUserFile();
 
   var users = xmlDoc.getElementsByTagName("User");
   alert(users.length);
@@ -120,3 +107,85 @@ function FileToString(file)
       reader.readAsText(file)
   });
 };
+
+//Add User
+document.getElementById("addaccount").addEventListener("click", function ()
+{
+  var userID = document.getElementById("useridadd").value;
+  var username = document.getElementById("usernameadd").value; 
+  var email = document.getElementById("emailadd").value; 
+  var country = document.getElementById("countryadd").value;
+  var paymentmethod = [];
+  for (var option of document.getElementById("paymentmethodadd").options)
+  {
+    if (option.selected)
+    {
+      paymentmethod.push(option.value);
+    }
+  } 
+
+  AddUser(userID, username, email, country, paymentmethod);
+});
+
+async function AddUser(userID, username, email, country, paymentmethod)
+{
+  const serializer = new XMLSerializer(); 
+  var xmlDoc = await GetUserFile();
+
+  var userElement = xmlDoc.createElement('User');
+
+  var userIdElement = xmlDoc.createElement('UserID');
+  userIdElement.textContent = userID;
+  userElement.appendChild(userIdElement);
+
+  var usernameElement = xmlDoc.createElement('UserName');
+  usernameElement.textContent = username;
+  userElement.appendChild(usernameElement);
+
+  var emailElement = xmlDoc.createElement('Email');
+  emailElement.textContent = email; 
+  userElement.appendChild(emailElement);
+
+  var countryElement = xmlDoc.createElement('CountryID');
+  countryElement.textContent = country;
+  userElement.appendChild(countryElement);
+
+  var paymentMethodsElement = xmlDoc.createElement('PaymentMethods'); 
+  for (var i = 0; i < paymentmethod.length; i++)
+  {
+    var paymentMethodElement = xmlDoc.createElement('PaymentMethod');
+    paymentMethodElement.textContent = paymentmethod[i];
+    paymentMethodsElement.appendChild(paymentMethodElement);
+  }
+  userElement.appendChild(paymentMethodsElement);
+
+  var users = xmlDoc.querySelector('Users');
+  users.appendChild(userElement); 
+  alert("User Appended");
+
+  var updatedXmlString = serializer.serializeToString(xmlDoc);
+
+  //save file to chrome local storage
+  localStorage.setItem("usersXml", updatedXmlString);
+  alert("User added successfully");
+}
+
+async function GetUserFile()
+{
+  const xmlString = localStorage.getItem("usersXml");
+  if (xmlString === null)
+  {
+    alert("load data from local file");
+    const response = await fetch('data/users.xml');
+      if (!response.ok)
+      {
+        alert("could not read xml file");
+      }
+      const xmlString = await response.text();  
+      alert(xmlString);
+      localStorage.setItem("usersXml", xmlString);
+  }
+  var parser = new DOMParser();
+  xmlDoc = parser.parseFromString(xmlString, "text/xml");  
+  return xmlDoc;
+}
