@@ -77,14 +77,18 @@
     <h2>Edit User Details</h2>
     <form>
       <label for="useridedit">UserID:</label> 
-      <input type="text" id = "useridedit"/> 
+      <input type="text" id = "userid-edit"/> 
       <label for="email-edit">Email:</label>
       <input type="text" id = "email-edit"/>
       <br>
     </form>
+    <label for="payment-method-edit">Payment Method:</label> 
+      <select name="Payment Method" multiple id="payment-method-edit">
+        <option value="0">none</option>
+    </select> 
     <label class="centered-button">
       <button id = "edit-user">Edit User</button>
-      <button id = "removeUser">Remove User</button>
+      <button id = "remove-user">Remove User</button>
     </label>
   </div>
 
@@ -92,8 +96,8 @@
     <h2> Settings </h2>
     <h4> Display </h4>
     <label for="toggle-switch">Dark Mode</label>
-    <label class="toggle-switch">
-      <input type="checkbox">
+    <label class="toggle-switch" >
+      <input type="checkbox" id="dark-mode"> 
       <span class="slider round"></span>
     </label>
     <h4> User Data </h4>
@@ -106,22 +110,10 @@
     <label class="centered-button">
     <button id="downloaduserfile">Download User Data</button>
     </label>
-    <h4> Autofill Domains </h4>
-    <form>
-      <label for="domain-input">Domains:</label> 
-      <input type="text" id="domain-input" /> 
-      <label class="centered-button">
-      <button id= "domain-input"><br>
     
-    <div class="removeable-list">
-      <select id="domain-list" multiple>
-      </select> 
-      <button id = "remove-domain">Remove</button>
-      </label>
-      </form>
-    </div>
   </div>
 
-  <script src="popup.js"></script>
+  <script src="src/Display.js"></script>
+  <script src="src/UserData.js"></script>
 </body>
 </html>

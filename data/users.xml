@@ -1,0 +1,11 @@
+<Users>
+    <User> 
+        <UserID>000000</UserID> 
+        <UserName>ExampleUserName</UserName>
+        <Email>ExampleEmail@email.com</Email> 
+        <CountryID>0</CountryID>
+        <PaymentMethods> 
+            <PaymentMethod>1</PaymentMethod>
+        </PaymentMethods>
+    </User>
+</Users>
