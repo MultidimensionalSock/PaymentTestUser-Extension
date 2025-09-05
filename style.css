@@ -81,6 +81,9 @@ body.dark label
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+  text-align: left;
+  border-width: 2px;
+  border-style: dotted;
 }
 
 body.dark #SearchUserTable {

@@ -10,11 +10,12 @@ document.getElementById("findaccount").addEventListener("click", function ()
 async function Search(countryID = 0, PaymentMethodID = 0)
 {
   var parent = document.getElementById("SearchUserTable");
-  for (var k = 1; k < parent.children.length; k++)
-  {
-    parent.removeChild(parent.children[k]);
-  }
-   
+  var children = parent.querySelectorAll("tr");
+  children.forEach(row => {
+    if (row.querySelector("td")){
+      row.remove();
+    }
+  }) 
   GetUserFile();
 
   var users = xmlDoc.getElementsByTagName("User"); 

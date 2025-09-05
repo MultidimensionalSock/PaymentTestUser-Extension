@@ -53,8 +53,7 @@ async function LoadCountries()
   for (var i = 0; i < countries.length; i++)
   {
     parent.forEach(element =>
-    {
-      alert(countries[i].name);
+    { 
       var option = document.createElement("option");
       option.innerHTML = countries[i].name;
       option.value = countries[i].id; 
@@ -78,8 +77,7 @@ async function LoadPaymentMethods()
   for (var i = 0; i < paymentMethods.length; i++)
   {
     parent.forEach(element =>
-    {
-      alert(paymentMethods[i].name);
+    { 
       var option = document.createElement("option");
       option.innerHTML = paymentMethods[i].name;
       option.value = paymentMethods[i].id; 
