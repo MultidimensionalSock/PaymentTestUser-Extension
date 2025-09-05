@@ -1,0 +1,17 @@
+{
+    "PaymentMethods":
+    [
+        { "id": 1, "name": "Credit Card" },
+        { "id": 2, "name": "Debit Card" },
+        { "id": 3, "name": "PayPal" },
+        { "id": 4, "name": "Apple Pay" },
+        { "id": 5, "name": "Google Pay" },
+        { "id": 6, "name": "Amazon Pay" },
+        { "id": 7, "name": "Samsung Pay" },
+        { "id": 8, "name": "Bank Transfer" }, 
+        { "id": 9, "name": "Alipay" }, 
+        { "id": 10, "name": "Stripe" },
+        { "id": 11, "name": "Klarna" }, 
+        { "id": 12, "name": "Venmo" } 
+    ]
+}

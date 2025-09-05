@@ -37,61 +37,53 @@ window.onload =  async function()
     LoadPaymentMethods();
     LoadCountries();
 }
-
+ 
 async function LoadCountries()
-{
-    var parent = document.getElementsByName("Countries");
+{ 
+  const response = await fetch('data/Country.json');
+  if (!response.ok)
+  {
+    alert("Could not read file");
+    return;
+  } 
+  doc = await response.json(); 
+  countries = doc.Countries;
 
-    const response = await fetch('data/country.xml');
-    if (!response.ok)
+  var parent = document.getElementsByName("Countries"); 
+  for (var i = 0; i < countries.length; i++)
+  {
+    parent.forEach(element =>
     {
-        alert("could not read xml file");
-    }
-    
-    const xmlString = await response.text();
-    var parser = new DOMParser();
-    xmlDoc = parser.parseFromString(xmlString, "text/xml");
-    var xmldata = xmlDoc.getElementsByTagName("Country");
-
-    for (var i = 0; i < xmldata.length; i++)
-    {
-        var id = xmldata[i].getElementsByTagName("id")[0].textContent;
-        var name = xmldata[i].getElementsByTagName("name")[0].textContent;
-
-        parent.forEach(element => {
-            var option = document.createElement("option");
-            option.innerHTML = name;
-            option.value = id;
-            element.appendChild(option);
+      alert(countries[i].name);
+      var option = document.createElement("option");
+      option.innerHTML = countries[i].name;
+      option.value = countries[i].id; 
+      element.appendChild(option);
     });
-}
+  }
 }
 
 async function LoadPaymentMethods()
 {
-    var parent = document.getElementsByName("Payment Method"); 
+  var response = await fetch('data/PaymentMethods.json');
+  if (!response.ok)
+  {
+    alert("Could not read file!" );
+    return;
+  }
+  doc = await response.json();
+  paymentMethods = doc.PaymentMethods;
 
-    const response = await fetch('data/paymentMethods.xml');
-    if (!response.ok)
+  var parent = document.getElementsByName("Payment Method"); 
+  for (var i = 0; i < paymentMethods.length; i++)
+  {
+    parent.forEach(element =>
     {
-        alert("could not read xml file");
-    } 
-    
-    const xmlString = await response.text();
-    var parser = new DOMParser();
-    xmlDoc = parser.parseFromString(xmlString, "text/xml");
-    var xmldata = xmlDoc.getElementsByTagName("PaymentMethod");
-
-    for (var i = 0; i < xmldata.length; i++)
-    {
-        var id = xmldata[i].getElementsByTagName("ID")[0].textContent;
-        var name = xmldata[i].getElementsByTagName("Name")[0].textContent;
-
-        parent.forEach(element => {
-            var option = document.createElement("option");
-            option.innerHTML = name;
-            option.value = id;
-            element.appendChild(option);
+      alert(paymentMethods[i].name);
+      var option = document.createElement("option");
+      option.innerHTML = paymentMethods[i].name;
+      option.value = paymentMethods[i].id; 
+      element.appendChild(option);
     });
   }
 }
@@ -109,8 +101,7 @@ document.getElementById("dark-mode").addEventListener("click", function(){
 function DarkMode(isDark)
 { 
   var body = document.body;
-  localStorage.setItem("dark", isDark.toString());
-  alert(localStorage.getItem("dark"));  
+  localStorage.setItem("dark", isDark.toString()); 
   if (isDark)
   {
     body.classList.add('dark');  

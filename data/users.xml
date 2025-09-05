@@ -1,11 +1,11 @@
 <Users>
     <User> 
-        <UserID>000000</UserID> 
-        <UserName>ExampleUserName</UserName>
-        <Email>ExampleEmail@email.com</Email> 
-        <CountryID>0</CountryID>
+        <UserID>6496227</UserID> 
+        <UserName></UserName>
+        <Email>RobynTestCanada@dn365test.com</Email> 
+        <CountryID>36</CountryID>
         <PaymentMethods> 
-            <PaymentMethod>1</PaymentMethod>
+            <PaymentMethod>138</PaymentMethod>
         </PaymentMethods>
     </User>
 </Users>
